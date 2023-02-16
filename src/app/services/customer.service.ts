@@ -13,7 +13,7 @@ export class CustomerService {
     //Setting customers as '[]' if localStorage returns null to avoid JSON.parse() error
     let customers: Customer[] = JSON.parse(localStorage.getItem('customers') || '[]')
     // Assigning explicit customer list through faker util on app's first interaction
-    if (customers === []) {
+    if (customers.length === 0) {
       customers = createInitialCustomers()
     }
     return customers
