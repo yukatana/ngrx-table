@@ -11,9 +11,10 @@ export const customerReducer = createReducer(
     [...state, customer]
   ),
   on(customerActions.editCustomer, (state, { customer }) =>
+    // Getting customer index in order to splice previous state
     state.splice(state.findIndex(e => e.id === customer.id), 1, customer)
   ),
-  on(customerActions.deleteCustomer, (state, { id }) => {
-    state.filter(customer => customer.id )
-  })
+  on(customerActions.deleteCustomer, (state, { id }) =>
+    state.filter(customer => customer.id === id)
+  )
 )

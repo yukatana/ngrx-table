@@ -9,7 +9,7 @@ export const createCustomer = createAction(
 
 export const editCustomer = createAction(
   '[Customer Modal] Edit customer',
-  props<{ customer: Customer }>
+  props<{ customer: Customer }>()
 )
 
 export const deleteCustomer = createAction(

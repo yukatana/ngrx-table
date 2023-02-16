@@ -4,5 +4,5 @@ export interface Customer {
   lastName: string;
   status: 'active'| 'pending' | 'inactive';
   email: string;
-  phone?: number
+  phone?: string;
 }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Customer } from '../models/customer';
-import { customerList } from '../data/customers.data';
+import { createInitialCustomers } from '../utils/faker.util';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,9 @@ export class CustomerService {
   static getCustomers = () => {
     //Setting customers as '[]' if localStorage returns null to avoid JSON.parse() error
     let customers: Customer[] = JSON.parse(localStorage.getItem('customers') || '[]')
-    // Assigning explicit customer list on app's first interaction
+    // Assigning explicit customer list through faker util on app's first interaction
     if (customers === []) {
-      customers = customerList
+      customers = createInitialCustomers()
     }
     return customers
   }
