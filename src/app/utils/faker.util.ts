@@ -16,3 +16,7 @@ export const createInitialCustomers = ()  => {
   })
   return customers
 }
+
+export const generateGUID = () => {
+  return faker.datatype.uuid()
+}
