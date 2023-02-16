@@ -10,12 +10,14 @@ import { CustomerTableComponent } from './components/customer-table/customer-tab
 import { CustomerFormComponent } from './components/customer-form/customer-form.component';
 
 import { customerReducer } from './state/customers.reducer';
+import { EditCustomerDialogComponent } from './components/edit-customer-dialog/edit-customer-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CustomerTableComponent,
-    CustomerFormComponent
+    CustomerFormComponent,
+    EditCustomerDialogComponent
   ],
   imports: [
     BrowserModule,

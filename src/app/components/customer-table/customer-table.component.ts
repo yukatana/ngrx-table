@@ -4,7 +4,9 @@ import { Customer } from '../../models/customer'
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import * as customerActions from '../../state/customers.actions';
-import { MatSort, MatSortable, Sort } from '@angular/material/sort';
+import { MatSort, MatSortable } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { EditCustomerDialogComponent } from '../edit-customer-dialog/edit-customer-dialog.component';
 
 @Component({
   selector: 'app-customer-table',
@@ -17,7 +19,8 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
   columns: string[] = ['id', 'firstName', 'lastName', 'status', 'email', 'phone', 'actions']
 
   constructor(
-    private store: Store<{ customers: Customer[]}>
+    private store: Store<{ customers: Customer[]}>,
+    private dialog: MatDialog
   ) {
     this.customers$ = store.select('customers')
   }
@@ -36,13 +39,13 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort
   }
 
-  onEdit = (customer: Customer): void => {
-    this.store.dispatch(customerActions.editCustomer({ customer }))
+  openModal = (customer: Customer) => {
+    this.dialog.open(EditCustomerDialogComponent, {
+      data: customer
+    })
   }
 
-  onDelete = (id: string): void => {
+  onDelete = (id: string) => {
     this.store.dispatch(customerActions.deleteCustomer({ id }))
-    return
   }
-
 }
