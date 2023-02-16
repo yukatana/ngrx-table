@@ -11,25 +11,31 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./edit-customer-dialog.component.css']
 })
 export class EditCustomerDialogComponent {
-  form: FormGroup
+  editCustomerForm: FormGroup
+  statuses: string[] = ['active', 'pending', 'inactive']
 
   constructor(
     private store: Store<{ customer: Customer }>,
     private dialogRef: MatDialogRef<EditCustomerDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Customer
   ) {
-    this.form = new FormGroup({
-      id: new FormControl(data.id),
+    const emailRegex = '^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-]+)(\\.[a-zA-Z]{2,5}){1,2}$'
+    const statusRegex = '\\b(active|pending|inactive)\\b'
+    const phoneNumberRegex = '^\\s*\\+?\\s*([0-9][\\s-]*){9,}$'
+    this.editCustomerForm = new FormGroup({
+      id: new FormControl({ value: data.id, disabled: true}),
       firstName: new FormControl(data.firstName, [Validators.required]),
       lastName: new FormControl(data.lastName, [Validators.required]),
-      status: new FormControl(data.status, [Validators.required]),
-      email: new FormControl(data.email, [Validators.required]),
-      phone: new FormControl(data.phone, [Validators.required])
+      status: new FormControl(data.status, [Validators.required, Validators.pattern(statusRegex)]),
+      email: new FormControl(data.email, [Validators.required, Validators.pattern(emailRegex)]),
+      phone: new FormControl(data.phone, [Validators.required, Validators.minLength(6), Validators.pattern(phoneNumberRegex)])
     })
   }
 
-  onEdit = (customer: Customer): void => {
+  onEdit = () => {
+    const customer: Customer = this.editCustomerForm.getRawValue()
     this.store.dispatch(customerActions.editCustomer({ customer }))
+    this.dialogRef.close()
   }
 
 }

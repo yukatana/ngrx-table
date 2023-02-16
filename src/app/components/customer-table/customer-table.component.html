@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container py-4">
   <div class="row text-center">
     <table mat-table [dataSource]="dataSource" matSort class="col">
 
@@ -54,6 +54,5 @@
       <tr mat-header-row *matHeaderRowDef="columns"></tr>
       <tr mat-row *matRowDef="let row; columns: columns"></tr>
     </table>
-
   </div>
 </div>

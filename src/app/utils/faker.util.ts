@@ -11,7 +11,7 @@ export const createInitialCustomers = ()  => {
       lastName: faker.name.lastName(),
       status: 'active',
       email: faker.internet.email(),
-      phone: faker.phone.number()
+      phone: faker.phone.number('###-###-###')
     })
   })
   return customers
