@@ -2,3 +2,7 @@
   border: solid 1px #C13FB2;
   border-radius: 25px;
 }
+
+button {
+  min-width: 80px;
+}

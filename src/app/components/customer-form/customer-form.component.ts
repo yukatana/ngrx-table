@@ -25,16 +25,18 @@ export class CustomerFormComponent {
       lastName: new FormControl('', [Validators.required]),
       status: new FormControl('active', [Validators.required, Validators.pattern(statusRegex)]),
       email: new FormControl('', [Validators.required, Validators.pattern(emailRegex)]),
-      phone: new FormControl('', [Validators.required, Validators.minLength(6), Validators.pattern(phoneNumberRegex)])
+      phone: new FormControl('', [Validators.minLength(6), Validators.pattern(phoneNumberRegex)])
     })
   }
 
-  onCreate = () => {
+  // We must pass the form directive as an argument in order to fully reset the form
+  onCreate = (formDirective: any) => {
     const customer: Customer = {
       id: generateGUID(),
       ...this.createCustomerForm.value
     }
     this.store.dispatch(customerActions.createCustomer({ customer }))
+    formDirective.resetForm()
     this.createCustomerForm.reset()
   }
 

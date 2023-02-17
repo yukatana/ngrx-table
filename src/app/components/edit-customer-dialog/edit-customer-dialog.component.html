@@ -37,7 +37,7 @@
         <mat-error *ngIf="editCustomerForm.controls['phone'].dirty && editCustomerForm.controls['phone'].errors?.['pattern']">Enter a valid phone number</mat-error>
       </mat-form-field>
       <div class="text-center">
-        <button type="submit" [disabled]="!editCustomerForm.valid" mat-raised-button color="accent" class="mx-3 my-1 w-25">Submit</button>
+        <button type="submit" [disabled]="!editCustomerForm.valid" mat-raised-button color="accent" class="mx-auto my-1 w-25">Submit</button>
       </div>
     </form>
   </div>
