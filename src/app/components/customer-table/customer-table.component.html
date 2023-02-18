@@ -1,12 +1,14 @@
 <div class="container py-4">
-  <div class="row text-center">
 
+  <div class="row">
     <div class="text-end">
       <mat-form-field class="col-12 w-25" id="filter" >
         <input type="text" matInput placeholder="Filter by last name" (keyup)="applyFilter($event)">
       </mat-form-field>
     </div>
+  </div>
 
+  <div class="row text-center" id="table-box">
     <table mat-table [dataSource]="dataSource" matSort class="col-12">
         <!-- id column -->
         <ng-container matColumnDef="id">

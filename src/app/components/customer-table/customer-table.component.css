@@ -12,7 +12,7 @@
   min-width: 100px !important;
 }
 
-.row {
+#table-box {
   overflow: auto;
 }
 
