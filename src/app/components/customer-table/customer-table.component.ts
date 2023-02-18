@@ -29,9 +29,16 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.dataSource = new MatTableDataSource<Customer>()
+    this.dataSource.filterPredicate = (data: Customer, filter: string) => {
+      return !filter || data.lastName.includes(filter)
+    }
     this.customers$.subscribe((customers: Customer[]) => {
       this.dataSource.data = customers
     })
+  }
+
+  applyFilter = (event: Event) => {
+    this.dataSource.filter = (event.target as HTMLInputElement).value
   }
 
   ngAfterViewInit() {
