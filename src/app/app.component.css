@@ -2,3 +2,7 @@ mat-toolbar > span {
   font-size: 1.4em;
   padding: 10px;
 }
+
+.border-top {
+  border-color: #6C757DA8 !important;
+}
