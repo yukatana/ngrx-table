@@ -2,9 +2,9 @@ import { faker } from '@faker-js/faker';
 import { Customer } from '../models/customer';
 
 // Using faker to generate array with 20 initial customer records
-export const createInitialCustomers = ()  => {
+export const createInitialCustomers = (n: number): Customer[]  => {
   const customers: Customer[] = []
-  Array.from({ length: 20}).forEach(() => {
+  Array.from({ length: n}).forEach(() => {
     customers.push({
       id: faker.datatype.uuid(),
       firstName: faker.name.firstName(),

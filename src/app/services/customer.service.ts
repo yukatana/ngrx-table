@@ -14,7 +14,7 @@ export class CustomerService {
     let customers: Customer[] = JSON.parse(localStorage.getItem('customers') || '[]')
     // Assigning explicit customer list through faker util on app's first interaction
     if (customers.length === 0) {
-      customers = createInitialCustomers()
+      customers = createInitialCustomers(20)
     }
     return customers
   }
