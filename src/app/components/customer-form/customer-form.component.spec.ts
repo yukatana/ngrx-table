@@ -51,13 +51,16 @@ describe('CustomerFormComponent', () => {
   })
 
   it('should disable the submit button when inputs are invalid', () => {
-    component.createCustomerForm.setValue({ email: '2138451' })
+    component.createCustomerForm.patchValue({ email: '2138451' })
     fixture.detectChanges()
     expect(fixture.debugElement.nativeElement.querySelector('button').disabled).toBeTruthy()
   })
 
   it('should reset the form after submission', () => {
     fillForm(testCustomer)
+    fixture.debugElement.nativeElement.querySelector('button').click()
+    fixture.detectChanges()
+    expect(component.createCustomerForm.pristine).toBeTruthy()
   })
 
 });
