@@ -1,5 +1,5 @@
 import { faker } from '@faker-js/faker';
-import { Customer } from '../models/customer';
+import { Customer, TestCustomer } from '../models/customer';
 
 // Using faker to generate array with 20 initial customer records
 export const createInitialCustomers = (n: number): Customer[]  => {
@@ -15,6 +15,17 @@ export const createInitialCustomers = (n: number): Customer[]  => {
     })
   })
   return customers
+}
+
+// Generating sample customer form input for unit test
+export const createTestCustomer = (): TestCustomer[] => {
+  return [{
+    firstName: faker.name.firstName(),
+    lastName: faker.name.lastName(),
+    status: 'active',
+    email: faker.internet.email(),
+    phone: faker.phone.number('###-###-###')
+  }]
 }
 
 export const generateGUID = () => {
