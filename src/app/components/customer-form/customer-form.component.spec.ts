@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CustomerFormComponent } from './customer-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { createTestCustomer } from '../../utils/faker.util';
-import { Customer, TestCustomer } from '../../models/customer';
+import { TestCustomer } from '../../models/customer';
 import { provideMockStore } from '@ngrx/store/testing';
 import { MaterialModule } from '../../modules/material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

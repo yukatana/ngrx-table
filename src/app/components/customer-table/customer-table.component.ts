@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Customer } from '../../models/customer'
 import { Store } from '@ngrx/store';
@@ -20,7 +20,8 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
 
   constructor(
     private store: Store<{ customers: Customer[]}>,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private cd: ChangeDetectorRef
   ) {
     this.customers$ = store.select('customers')
   }
@@ -44,6 +45,8 @@ export class CustomerTableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.sort.sort(({ id: 'firstName', start: 'asc'}) as MatSortable)
     this.dataSource.sort = this.sort
+    // Manually triggering change detection in order to prevent bug caused by sorting
+    this.cd.detectChanges()
   }
 
   openModal = (customer: Customer) => {
