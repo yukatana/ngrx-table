@@ -5,6 +5,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { createInitialCustomers } from '../../utils/faker.util';
 import { Customer } from '../../models/customer';
 import { provideMockStore } from '@ngrx/store/testing';
+import { MaterialModule } from '../../modules/material/material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 describe('CustomerFormComponent', () => {
@@ -16,7 +18,11 @@ describe('CustomerFormComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [ CustomerFormComponent ],
-      imports: [ ReactiveFormsModule ],
+      imports: [
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        MaterialModule
+      ],
       providers: [ provideMockStore({ initialState }) ]
     })
     .compileComponents();
