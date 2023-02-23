@@ -28,7 +28,7 @@ export class EditCustomerDialogComponent {
       lastName: new FormControl(data.lastName, [Validators.required]),
       status: new FormControl(data.status, [Validators.required, Validators.pattern(statusRegex)]),
       email: new FormControl(data.email, [Validators.required, Validators.pattern(emailRegex)]),
-      phone: new FormControl(data.phone, [Validators.required, Validators.minLength(6), Validators.pattern(phoneNumberRegex)])
+      phone: new FormControl(data.phone, [Validators.minLength(6), Validators.pattern(phoneNumberRegex)])
     })
   }
 

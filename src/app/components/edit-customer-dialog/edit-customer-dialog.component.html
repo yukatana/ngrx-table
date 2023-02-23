@@ -32,7 +32,6 @@
       <mat-form-field class="col-12 px-2">
         <mat-label>Phone</mat-label>
         <input matInput formControlName="phone">
-        <mat-error *ngIf="editCustomerForm.controls['phone'].dirty && editCustomerForm.controls['phone'].errors?.['required']">This field cannot be empty</mat-error>
         <mat-error *ngIf="editCustomerForm.controls['phone'].dirty && editCustomerForm.controls['phone'].errors?.['minLength']">Enter a full phone number</mat-error>
         <mat-error *ngIf="editCustomerForm.controls['phone'].dirty && editCustomerForm.controls['phone'].errors?.['pattern']">Enter a valid phone number</mat-error>
       </mat-form-field>
